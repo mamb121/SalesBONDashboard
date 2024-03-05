@@ -2,12 +2,9 @@
   <v-app id="inspire" >
     <v-layout>
     <v-navigation-drawer 
-    v-model="drawer"
-    :rail="rail"
     class="px-0"
     expand-on-hover
-    permanent
-    app
+    rail
     @click="rail = !rail"
     >
       <v-list>
@@ -24,9 +21,6 @@
 
 
     <v-app-bar dense :color="useDarkTheme ? 'dark' : 'white'" app>
-      <v-app-bar-nav-icon 
-          @click="drawer = !drawer"
-        ></v-app-bar-nav-icon>
       <v-toolbar-title>BON Sales Dashboard</v-toolbar-title>
         <v-btn icon @click="toggleTheme">
           <v-icon>mdi-lightbulb-on-outline</v-icon>
