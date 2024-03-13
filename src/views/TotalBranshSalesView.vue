@@ -12,7 +12,7 @@
       >
         Total Branch Sales
       </v-card-title>
-      <v-btn icon class="text-right"  elevation="0" @click="!drawer">
+      <v-btn icon class="text-right"  elevation="0" @click="showFilter = true">
           <v-icon>mdi-filter</v-icon>
       </v-btn>
     </div>
@@ -21,15 +21,29 @@
       <div id="myLineChart" style="width:100%; height:600px; margin: auto;"></div>
     </v-card-text>
   </v-card>
-  <BranshFilter :drawer="drawer"></BranshFilter>
+  <v-navigation-drawer      
+      v-model="showFilter"
+      location="right"
+      absolute
+      temporary
+      width="300px"
+      class="elevation-2"
+      hide-overlay
+    >
+      <v-list-item>
+        <v-list-item-title>Filters</v-list-item-title>
+      </v-list-item>
+      <v-divider />
+      <BranshFilter></BranshFilter>
+    </v-navigation-drawer>
+  
 </template>
 
 <script lang="ts">
 import * as echarts from 'echarts/core';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import BranshFilter from '@/components/BranshFilter.vue'; // @ is an alias to /src
-
+import BranshFilter from '@/components/BranshFilter.vue';
 import { BarChart,PieChart,LineChart } from 'echarts/charts';
 
 import {
@@ -58,7 +72,7 @@ export default{
   },
   data(){
     return {
-      drawer:true
+      showFilter:true,
   }
   },
   mounted() {
